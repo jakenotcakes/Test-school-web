@@ -1,0 +1,1082 @@
+/* =============================================================
+  Al-Talib Al Thaki Private School — homepage stylesheet
+   Color system: Cream (background) -> Emerald (structure) ->
+                 Gold (details) -> Orange (highlights)
+   Css organized top to bottom in the same order sections
+   appear on the page, so you can jump to the part you're editing.
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   1. DESIGN TOKENS
+   All colors, fonts, spacing and radius values live here as CSS
+   custom properties (variables). Changing a value here updates
+   it everywhere it's used on the page — this is the single place
+   to tweak the palette instead of hunting through every rule.
+   ------------------------------------------------------------- */
+:root {
+  /* Cream — background */
+  --cream: #fbf6ea; /* main page background */
+  --cream-deep: #f4e8cb; /* deeper cream used in the hero gradient and alt sections */
+  --surface: #ffffff; /* white card panels, sits on top of the cream */
+
+  /* Emerald — structure (header, footer, headings, primary buttons) */
+  --emerald: #0e4b3b;
+  --emerald-light: #17694f; /* hover/active state for emerald elements */
+
+  /* Gold — details (borders, secondary buttons, dividers, icons) */
+  --gold: #c9971e;
+  --gold-light: #e9cf8f; /* soft gold for backgrounds/badges */
+
+  /* Orange — highlights (call-to-action links, emphasized words) */
+  --orange: #d97b3f;
+
+  /* Text */
+  --text: #26312b; /* body copy, warm near-black */
+  --muted: #6d7669; /* secondary/supporting copy */
+  --border: rgba(14, 75, 59, 0.14);
+
+  /* Elevation & shape */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 2px 8px rgba(14, 75, 59, 0.08);
+  --shadow-md: 0 16px 34px rgba(14, 75, 59, 0.14);
+
+  /* Type */
+  --font-heading: "Lora", Georgia, "Times New Roman", serif;
+  --font-body:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  /* Layout */
+  --container: 1180px;
+  --header-height: 78px;
+}
+
+/* -------------------------------------------------------------
+   2. RESET & BASE ELEMENTS
+   A light reset so every browser starts from the same defaults,
+   then base styling for plain HTML tags (body, headings, links).
+   ------------------------------------------------------------- */
+* {
+  box-sizing: border-box; /* padding/border are included in an element's width, not added on top */
+}
+html {
+  scroll-behavior: smooth; /* clicking a nav link glides instead of jumping */
+}
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--cream);
+}
+img {
+  max-width: 100%; /* images never overflow their container */
+  display: block;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  color: var(--emerald);
+  line-height: 1.25;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+/* clamp(min, preferred, max) lets font-size scale fluidly with the
+   viewport instead of jumping abruptly at each breakpoint */
+h1 {
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3rem);
+  line-height: 1.18;
+}
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+}
+h3 {
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+}
+p {
+  margin: 0 0 1rem;
+}
+a {
+  color: var(--emerald);
+}
+.prose {
+  max-width: 65ch; /* keeps long paragraphs from stretching edge to edge on wide screens */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -------------------------------------------------------------
+   3. LAYOUT HELPERS
+   Reusable "utility" classes that many sections share.
+   ------------------------------------------------------------- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section {
+  padding: 4.5rem 0;
+  scroll-margin-top: calc(
+    var(--header-height) + 10px
+  ); /* stops the sticky header covering the heading when a nav link jumps here */
+}
+.section--alt {
+  background: var(
+    --cream-deep
+  ); /* alternates section backgrounds for visual rhythm */
+}
+.section-head {
+  text-align: center;
+  max-width: 70ch;
+  margin: 0 auto 2.5rem;
+}
+/* The small tracked-out label above a section heading, e.g. "OUR PROGRAMS" */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 0.6rem;
+}
+.eyebrow::after {
+  content: "";
+  width: 34px;
+  height: 2px;
+  background: var(--gold);
+}
+.section-head--left {
+  text-align: left;
+  margin: 0;
+  max-width: none;
+}
+
+/* Skip link: invisible until a keyboard user tabs to it, then jumps
+   straight past the header to the main content */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--emerald);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 0;
+  z-index: 2000;
+  text-decoration: none;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* -------------------------------------------------------------
+   4. HEADER
+   ------------------------------------------------------------- */
+.site-header {
+  background: var(--emerald);
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+.header-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0.6rem 2rem;
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #fff;
+}
+.brand-badge {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+.brand-tagline {
+  font-size: 0.78rem;
+  color: var(--gold-light);
+}
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
+.site-nav a {
+  color: #f2ead4;
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: #fff;
+}
+/* Highlights whichever section the visitor is currently scrolled to
+   — toggled by IntersectionObserver in script.js */
+.site-nav a.active {
+  color: #fff;
+  border-color: var(--gold);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.nav-toggle {
+  display: none; /* only shown on small screens, see the media query at the bottom */
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------
+   5. BUTTONS
+   Three variants reused across the page: solid emerald, outlined
+   gold, and solid gold (used for the header's Login/Register CTA).
+   ------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+.btn svg {
+  width: 18px;
+  height: 18px;
+}
+.btn-primary {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: #fff;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--emerald-light);
+  border-color: var(--emerald-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.btn-outline {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--emerald);
+}
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+.btn-gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--emerald);
+  padding: 0.6rem 1.4rem;
+  font-size: 0.92rem;
+}
+.btn-gold:hover,
+.btn-gold:focus-visible {
+  background: #b98a15;
+  border-color: #b98a15;
+}
+/* A plain text link with a small arrow that nudges right on hover,
+   used for every "Learn More" throughout the page */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--orange);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.link-arrow svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.18s ease;
+}
+.link-arrow:hover svg,
+.link-arrow:focus-visible svg {
+  transform: translateX(4px);
+}
+
+/* -------------------------------------------------------------
+   6. HERO
+   ------------------------------------------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--cream) 45%, var(--cream-deep) 100%);
+  padding: 4rem 0 5rem;
+}
+/* Decorative geometric corner pattern (a simple two-way diamond
+   lattice made from repeating gradients — no image file needed) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr; /* Asymmetrical editorial split */
+  gap: 4rem; /* Use rem instead of 4fr */
+  align-items: center;
+}
+.hero-copy .eyebrow {
+  color: var(--emerald);
+}
+.hero-copy .eyebrow::after {
+  background: var(--orange);
+}
+.hero-copy h1 {
+  margin-bottom: 1rem;
+}
+/* The single highlighted word in the headline (e.g. "Qur'an") */
+.hero-copy h1 .highlight {
+  color: var(--orange);
+}
+.hero-copy p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 46ch;
+}
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+
+/* The circular emblem illustration on the right of the hero.
+   Built entirely from SVG shapes layered with CSS, so it renders
+   crisply at any size without needing an image file. */
+.hero-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero-art-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(201, 151, 30, 0.28) 0%,
+    transparent 70%
+  );
+  filter: blur(10px);
+}
+.hero-medallion {
+  position: relative;
+  width: min(360px, 80vw);
+  height: min(360px, 80vw);
+}
+
+/* -------------------------------------------------------------
+   7. FEATURE STRIP (the 4-icon row just under the hero)
+   ------------------------------------------------------------- */
+.features {
+  padding: 3rem 0;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-icon svg {
+  width: 24px;
+  height: 24px;
+}
+/* One tinted circle color per feature, matching the reference image */
+.feature-icon--green {
+  background: #dcefdf;
+  color: #2f7a4d;
+}
+.feature-icon--pink {
+  background: #f6dfe6;
+  color: #b5486f;
+}
+.feature-icon--blue {
+  background: #dcebf7;
+  color: #2a6fa8;
+}
+.feature-icon--gold {
+  background: var(--gold-light);
+  color: #9c7412;
+}
+.feature h3 {
+  font-size: 1.02rem;
+  margin: 0 0 0.2rem;
+}
+.feature p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+/* -------------------------------------------------------------
+   8. ABOUT
+   ------------------------------------------------------------- */
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+
+.value-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--shadow-sm);
+}
+.value-card h4 {
+  font-family: var(--font-heading);
+  margin: 0 0 0.35rem;
+  color: var(--emerald);
+  font-size: 1.02rem;
+}
+.value-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+/* -------------------------------------------------------------
+   9. OUR CAMPUSES
+   ------------------------------------------------------------- */
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.campus-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.campus-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+/* Decorative gradient header standing in for a campus photo —
+   swap this block for a real <img class="campus-img"> once photos
+   are available */
+.campus-media {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--emerald) 0%,
+    var(--emerald-light) 100%
+  );
+}
+.campus-media svg {
+  width: 40px;
+  height: 40px;
+  color: var(--gold-light);
+}
+/* Ready for when a real photo replaces .campus-media — just swap the
+   placeholder <div> for <img class="campus-img" src="..." alt="...">
+   and it will sit in the same spot at the same size */
+.campus-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+.campus-body {
+  padding: 1.1rem 1.2rem 1.4rem;
+}
+.campus-body h3 {
+  margin: 0 0 0.6rem;
+}
+.campus-contact {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.campus-contact a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.campus-contact a:hover,
+.campus-contact a:focus-visible {
+  color: var(--orange);
+}
+.campus-contact svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+/* -------------------------------------------------------------
+   10. ADMISSION (steps + program cards)
+   ------------------------------------------------------------- */
+.steps-list {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  max-width: 60ch;
+}
+.steps-list li {
+  counter-increment: step;
+  display: flex;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.steps-list li:last-child {
+  border-bottom: 0;
+}
+.steps-list li::before {
+  content: counter(step);
+  flex: 0 0 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--emerald);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+.program-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.program-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.program-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.program-icon--orange {
+  background: #f7e2cf;
+  color: var(--orange);
+}
+.program-icon--blue {
+  background: #dcebf7;
+  color: #2a6fa8;
+}
+.program-icon--green {
+  background: #dcefdf;
+  color: #2f7a4d;
+}
+.program-icon--purple {
+  background: #e8dff2;
+  color: #7448a6;
+}
+.program-card h3 {
+  margin: 0 0 0.4rem;
+}
+.program-card p {
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin: 0 0 0.9rem;
+}
+.key-dates {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 2rem;
+}
+
+/* -------------------------------------------------------------
+   11. NEWS & INFORMATION
+   ------------------------------------------------------------- */
+.news-info-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 0.8fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.news-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.news-list li:last-child {
+  border-bottom: 0;
+}
+.news-date {
+  flex: 0 0 auto;
+  background: var(--gold-light);
+  color: #7a5c0f;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  height: fit-content;
+}
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.2rem;
+}
+.info-card h4 {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-heading);
+  color: var(--emerald);
+  font-size: 1rem;
+}
+.info-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* -------------------------------------------------------------
+   12. CONTACT
+   ------------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Offset right column slightly downward */
+.contact-grid > div:last-child {
+  margin-top: 1.5rem;
+}
+.contact-form {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+label {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.contact-form label:first-child {
+  margin-top: 0;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ddd3ba;
+  border-radius: 8px;
+  margin-top: 0.35rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--cream);
+}
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+.contact-form .btn {
+  margin-top: 1.4rem;
+  width: 100%;
+}
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+.form-status.success {
+  color: #2f7a4d;
+}
+.form-status.error {
+  color: #b3402c;
+}
+
+.info-box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+.info-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  text-align: center;
+}
+.info-box dt {
+  font-weight: 700;
+  color: var(--emerald);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+.info-box dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.info-box a {
+  color: var(--orange);
+  text-decoration: none;
+}
+.info-box a:hover,
+.info-box a:focus-visible {
+  text-decoration: underline;
+}
+/* Stand-in for a Google Maps embed until a real address is ready */
+.map-placeholder {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+}
+.map-placeholder svg {
+  width: 32px;
+  height: 32px;
+  color: var(--gold);
+  margin: 0 auto 0.5rem;
+}
+
+/* -------------------------------------------------------------
+   13. FOOTER
+   ------------------------------------------------------------- */
+.site-footer {
+  background: var(--emerald);
+  color: #e9e2c9;
+  padding: 3.5rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  opacity: 0.15;
+  background-image:
+    repeating-linear-gradient(45deg, var(--gold) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(-45deg, var(--gold) 0 2px, transparent 2px 24px);
+  -webkit-mask-image: radial-gradient(
+    circle at bottom right,
+    #000 0%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(circle at bottom right, #000 0%, transparent 75%);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.footer-brand-badge {
+  width: 40px;
+  height: 40px;
+}
+.footer-brand span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #fff;
+}
+.site-footer p {
+  color: #cfd8ca;
+  font-size: 0.92rem;
+}
+.footer-col h4 {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin: 0 0 0.9rem;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer-col a {
+  color: #e9e2c9;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.footer-col a:hover,
+.footer-col a:focus-visible {
+  color: var(--gold-light);
+}
+.footer-social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--emerald);
+}
+.footer-social svg {
+  width: 16px;
+  height: 16px;
+}
+.footer-bottom {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #b9c2b3;
+}
+.footer-bottom a {
+  color: #b9c2b3;
+}
+
+/* -------------------------------------------------------------
+   14. ACCESSIBILITY
+   ------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* Cuts every animation/transition down to nearly nothing for
+   visitors who've asked their OS for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* -------------------------------------------------------------
+   15. RESPONSIVE
+   ------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+}
+  .hero-copy p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-ctas {
+    justify-content: center;
+  }
+  .hero-art {
+    order: -1;
+  }
+  .news-info-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  .header-inner {
+    padding: 0.6rem 1.25rem;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-wrap {
+    display: contents;
+  }
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--emerald);
+    padding: 1rem 1.25rem 1.5rem;
+    display: none;
+  }
+  .site-nav.open {
+    display: block;
+  }
+  .site-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .site-nav a {
+    width: 100%;
+    padding: 0.6rem 0;
+  }
+  .brand-tagline {
+    display: none; /* saves vertical space on small screens */
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 3rem 0;
+  }
+}
