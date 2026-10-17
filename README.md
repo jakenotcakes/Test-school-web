@@ -1,13 +1,12 @@
 #  Private School (Prototype Website)
 > **Designed & Developed by Dev Aeiru**
-## 📊 Transition Progress: Removing AI Build Artifacts
 
 ---
 
-## 📌 Important Note
-This is a test prototype school website. Some features, layouts, and components are actively being refined and polished. 
+## 📌 Note from the Developer
+I am a beginner-to-intermediate web developer, and this is my first major project—a prototype website built for a private school. 
 
-Please note that AI assistance was utilized during early prototyping to help build out initial front-end UI/UX structures. I do not claim 100% solo creation rights for the original layout framework. The current focus of development is completely refactoring and remaking the template to strip away generic AI artifacts, replacing them with a custom, editorial layout inspired by traditional prep school aesthetics.
+Please note that this is a test website and some features are still actively being polished. I utilized AI assistance during early prototyping to help build out initial front-end UI/UX structures, so I do not claim 100% solo creation rights for the original layout framework. The current focus of this project is completely refactoring and remaking the template to strip away generic AI artifacts and transform it into a custom, editorial layout inspired by traditional prep school aesthetics.
 
 ## 📊 Transition Progress: Removing AI Build Artifacts
 
@@ -39,7 +38,3 @@ Please note that AI assistance was utilized during early prototyping to help bui
 * **CSS** – Custom styling & CSS Grid layout system
 * **JavaScript** – Interactivity and form handling
 
----
-
-## 📸 Preview
-*(Include a screenshot or preview GIF here)*
