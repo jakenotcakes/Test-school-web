@@ -15,7 +15,7 @@ Please note that this is a test website and some features are still actively bei
 
 [██████████░░░░░░░░░░░░] 45% Complete
 
-> **Current Status Notice:** Development is temporarily on halt while focusing on reviewing for upcoming exams.
+> **Current Status Notice:** Development is temporarily on halt.
 
 | Phase / Feature | Status | Details |
 | :--- | :---: | :--- |
