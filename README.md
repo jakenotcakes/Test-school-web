@@ -1,40 +1,41 @@
-#  Private School (Prototype Website)
+# Private School Website V2.0
 > **Designed & Developed by Dev Aeiru**
 
 ---
 
 ## 📌 Note from the Developer
-I am a beginner-to-intermediate web developer, and this is my first major project—a prototype website built for a private school. 
+I am a beginner-to-intermediate web developer, and this is my second major project—a revised and improved website built for a private school. 
 
-Please note that this is a test website and some features are still actively being polished. I utilized AI assistance during early prototyping to help build out initial front-end UI/UX structures, so I do not claim 100% solo creation rights for the original layout framework. The current focus of this project is completely refactoring and remaking the template to strip away generic AI artifacts and transform it into a custom, editorial layout inspired by traditional prep school aesthetics.
+Please note that this is a test website and some features are still actively being polished. I utilized AI assistance for this build to help map out initial front-end UI/UX structures, so I do not claim 100% solo creation rights for the original layout framework. The current focus of this project is completely refactoring and improving my old website design for the similar school.
 
-## 📊 Transition Progress: Removing AI Build Artifacts
+---
+
+## 📊 Web Creation Progress: Improvement & Refactoring
+
+
+
 
 [██████████░░░░░░░░░░░░] 45% Complete
 
----
 
-| Phase / Artifact | Status | Details |
+
+| Phase / Feature | Status | Details |
 | :--- | :---: | :--- |
-| **Color Scheme & Typography** | 🟢 Done | Shifted to traditional emerald, gold, and editorial serif headlines. |
-| **Code Cleanup & Comments** | 🟢 Done | Stripped boilerplate code comments and placeholder bracket text. |
-| **Pill Buttons & Corners** | 🟡 In Progress | Changing `border-radius: 999px` to clean institutional rounded corners. |
-| **Pastel Feature Row** | 🟡 In Progress | Replacing four-color app icon grid with a clean typographic list. |
-| **Layout Asymmetry** | 🟡 In Progress | Converting equal 50/50 hero and card grids into editorial 1.4fr ratios. |
-| **Hero Medallion Graphic** | 🔴 Pending | Swapping synthetic SVG rings for a framed photograph container. |
+| **Brand Palette & Type** | 🟢 Done | Deep emerald green and warm gold with serif headings. |
+| **Code Restructuring** | 🟢 Done | Cleaned up HTML5 semantic document hierarchy. |
+| **UI Refinement** | 🟡 In Progress | Transitioning generic layout blocks to custom editorial components. |
+| **Asset Optimization** | 🔴 Pending | Replacing placeholder graphics with custom framed school photography. |
 
----
-
-## 🚧 Status & Ongoing Refinements
-- [x] **Core HTML Structure:** Complete semantic baseline for Hero, About, Campuses, News, and Contact sections.
-- [x] **Brand Palette:** Deep emerald green and warm gold institutional styling.
-- [/] **UI/UX Refinement:** Refactoring rigid grids into editorial, asymmetrical spacing.
-- [/] **Component Overhaul:** Replacing pastel badge grids and vector fill graphics with bespoke typography and image containers.
-- [ ] **Content Polish:** Finalizing copy, addresses, and media assets.
 ---
 
 ## 🛠️ Built With
-* **HTML** – Semantic document layout
-* **CSS** – Custom styling & CSS Grid layout system
+* **HTML5** – Semantic document structure
+* **CSS3** – Custom styling & CSS Grid layout system
 * **JavaScript** – Interactivity and form handling
+
+---
+
+## 👏 Acknowledgements & Inspiration
+* **Design Concept:** Layout structure inspired by [Arcana by HTML5 UP](https://html5up.net/arcana).
+* **Codebase:** Hand-coded HTML5 and CSS3 custom implementation by Dev Aeiru.
 
