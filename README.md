@@ -13,22 +13,19 @@ Please note that this is a test website and some features are still actively bei
 ## 📊 Web Creation Progress: Improvement & Refactoring
 
 
-
-
 [██████████░░░░░░░░░░░░] 45% Complete
 
-
-
-> **Current Status Notice:** Development is temporarily on halt.
+> **Current Status Notice:** Development is temporarily on halt while focusing on reviewing for upcoming exams.
 
 | Phase / Feature | Status | Details |
-| :003 | :Development is temporarily on halt.: | :Ui refinement and polishing |
+| :--- | :---: | :--- |
 | **Document Structure & Semantic HTML** | 🟢 Done | Configured core page layout, header navigation, multi-campus grid, news section, and full footer[cite: 1]. |
 | **Brand Identity & Localisation** | 🟢 Done | Integrated official insignia, regional tags (Mabela, Oman), and formatted Omani dialing codes (+968)[cite: 1]. |
 | **Content Hierarchy & Core Values** | 🟢 Done | Established institutional messaging covering school vision, mission, and foundational student values[cite: 1]. |
 | **UI Refinement & Anti-Template Purge** | 🟡 In Progress | Eliminating AI boilerplate visual tropes, pill buttons, and pastel icon grids in favor of a clean, editorial layout. |
 | **Copy Optimization & Polish** | 🟡 In Progress | Replacing technical placeholder text (`[Put your description here]`) with tailored academic copy[cite: 1]. |
 | **Asset Pipeline & Interactive Media** | 🔴 Pending | Integrating high-resolution institutional photography, interactive Google Maps frame, and live contact handlers[cite: 1]. |
+
 
 ---
 
