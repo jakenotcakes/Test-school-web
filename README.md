@@ -21,11 +21,12 @@ Please note that this is a test website and some features are still actively bei
 
 | Phase / Feature | Status | Details |
 | :--- | :---: | :--- |
-| **Brand Palette & Type** | 🟢 Done | Deep emerald green and warm gold with serif headings. |
-| **Code Restructuring** | 🟢 Done | Cleaned up HTML5 semantic document hierarchy. |
-| **UI Refinement** | 🟡 In Progress | Transitioning generic layout blocks to custom editorial components. |
-| **Asset Optimization** | 🔴 Pending | Replacing placeholder graphics with custom framed school photography. |
-
+| **Document Structure & Semantic HTML** | 🟢 Done | Added header, main sections, multi-campus layout, news grid, and footer[cite: 1]. |
+| **Brand Identity & Navigation** | 🟢 Done | Integrated school logo, regional tags (Mabela, Oman), and clean navigation links[cite: 1]. |
+| **Content Localisation** | 🟢 Done | Added core school values, mission, vision, and campus contact details (+968)[cite: 1]. |
+| **UI Copy & Placeholders** | 🟡 In Progress | Replacing `[Put your description here]` and `blabla test` text with authentic school copy. |
+| **Icon Badges & Visual Styling** | 🟡 In Progress | Populating vector icon containers and applying final CSS custom styles. |
+| **Asset & Interactive Features** | 🔴 Pending | Setting up active map iframe, working contact phone links, and real staff imagery. |
 ---
 
 ## 🛠️ Built With
