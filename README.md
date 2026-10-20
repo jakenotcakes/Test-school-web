@@ -19,14 +19,17 @@ Please note that this is a test website and some features are still actively bei
 
 
 
+> **Current Status Notice:** Development is temporarily on halt.
+
 | Phase / Feature | Status | Details |
-| :--- | :---: | :--- |
-| **Document Structure & Semantic HTML** | 🟢 Done | Added header, main sections, multi-campus layout, news grid, and footer[cite: 1]. |
-| **Brand Identity & Navigation** | 🟢 Done | Integrated school logo, regional tags (Mabela, Oman), and clean navigation links[cite: 1]. |
-| **Content Localisation** | 🟢 Done | Added core school values, mission, vision, and campus contact details (+968)[cite: 1]. |
-| **UI Copy & Placeholders** | 🟡 In Progress | Replacing `[Put your description here]` and `blabla test` text with authentic school copy. |
-| **Icon Badges & Visual Styling** | 🟡 In Progress | Populating vector icon containers and applying final CSS custom styles. |
-| **Asset & Interactive Features** | 🔴 Pending | Setting up active map iframe, working contact phone links, and real staff imagery. |
+| :003 | :Development is temporarily on halt.: | :Ui refinement and polishing |
+| **Document Structure & Semantic HTML** | 🟢 Done | Configured core page layout, header navigation, multi-campus grid, news section, and full footer[cite: 1]. |
+| **Brand Identity & Localisation** | 🟢 Done | Integrated official insignia, regional tags (Mabela, Oman), and formatted Omani dialing codes (+968)[cite: 1]. |
+| **Content Hierarchy & Core Values** | 🟢 Done | Established institutional messaging covering school vision, mission, and foundational student values[cite: 1]. |
+| **UI Refinement & Anti-Template Purge** | 🟡 In Progress | Eliminating AI boilerplate visual tropes, pill buttons, and pastel icon grids in favor of a clean, editorial layout. |
+| **Copy Optimization & Polish** | 🟡 In Progress | Replacing technical placeholder text (`[Put your description here]`) with tailored academic copy[cite: 1]. |
+| **Asset Pipeline & Interactive Media** | 🔴 Pending | Integrating high-resolution institutional photography, interactive Google Maps frame, and live contact handlers[cite: 1]. |
+
 ---
 
 ## 🛠️ Built With
