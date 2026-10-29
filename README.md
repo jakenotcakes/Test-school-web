@@ -6,7 +6,7 @@
 ## 📌 Note from the Developer
 I am a beginner-to-intermediate web developer, and this is my second major project—a revised and improved website built for a private school. 
 
-Please note that this is a test website and some features are still actively being polished. I utilized AI assistance for this build to help map out initial front-end UI/UX structures, so I do not claim 100% solo creation rights for the original layout framework. The current focus of this project is completely refactoring and improving my old website design for the similar school.
+Please note that this is a private website and some features are still actively being polished. I utilized AI assistance for this build to help map out initial front-end UI/UX structures, so I do not claim 100% solo creation rights for the original layout framework. The current focus of this project is completely refactoring and improving my old website design for the similar school.
 
 ---
 
@@ -19,12 +19,12 @@ Please note that this is a test website and some features are still actively bei
 
 | Phase / Feature | Status | Details |
 | :--- | :---: | :--- |
-| **Document Structure & Semantic HTML** | 🟢 Done | Configured core page layout, header navigation, multi-campus grid, news section, and full footer[cite: 1]. |
-| **Brand Identity & Localisation** | 🟢 Done | Integrated official insignia, regional tags (Mabela, Oman), and formatted Omani dialing codes (+968)[cite: 1]. |
-| **Content Hierarchy & Core Values** | 🟢 Done | Established institutional messaging covering school vision, mission, and foundational student values[cite: 1]. |
+| **Document Structure & Semantic HTML** | 🟢 Done | Configured core page layout, header navigation, multi-campus grid, news section, and full footer. |
+| **Brand Identity & Localisation** | 🟢 Done | Integrated official insignia & regional tags. |
+| **Content Hierarchy & Core Values** | 🟢 Done | Established institutional messaging covering school vision, mission, and foundational student values. |
 | **UI Refinement & Anti-Template Purge** | 🟡 In Progress | Eliminating AI boilerplate visual tropes, pill buttons, and pastel icon grids in favor of a clean, editorial layout. |
-| **Copy Optimization & Polish** | 🟡 In Progress | Replacing technical placeholder text (`[Put your description here]`) with tailored academic copy[cite: 1]. |
-| **Asset Pipeline & Interactive Media** | 🔴 Pending | Integrating high-resolution institutional photography, interactive Google Maps frame, and live contact handlers[cite: 1]. |
+| **Copy Optimization & Polish** | 🟡 In Progress | Replacing technical placeholder text (`[Put your description here]`) with tailored academic copy. |
+| **Asset Pipeline & Interactive Media** | 🔴 Pending | Integrating high-resolution institutional photography, interactive Google Maps frame, and live contact handlers. |
 
 
 ---
