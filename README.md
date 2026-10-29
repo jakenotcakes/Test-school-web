@@ -10,7 +10,7 @@ Please note that this is a test website and some features are still actively bei
 
 ---
 
-## 📊 Web Creation Progress: Improvement & Refactoring
+## 📊 Web Creation Progress: Pending 
 
 
 [██████████░░░░░░░░░░░░] 45% Complete
