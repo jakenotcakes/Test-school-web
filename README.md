@@ -13,9 +13,9 @@ Please note that this is a test website and some features are still actively bei
 ## 📊 Web Creation Progress: Pending 
 
 
-[██████████░░░░░░░░░░░░] 45% Complete
+[████████████░░░░░░░░░] 50% Complete
 
-> **Current Status Notice:** Development is temporarily on halt.
+> **Current Status Notice:** Ongoing Development.
 
 | Phase / Feature | Status | Details |
 | :--- | :---: | :--- |
