@@ -200,9 +200,19 @@
 
 							var result = false,
 								boundary = 20,
-								delta = 50;
+								delta = 50,
+								side = config.side;
 
-							switch (config.side) {
+							// In Arabic (right-to-left) main.css moves the panel to the opposite edge,
+							// so the swipe that closes it points the opposite way too.
+								if (document.documentElement.dir == 'rtl') {
+									if (side == 'left')
+										side = 'right';
+									else if (side == 'right')
+										side = 'left';
+								}
+
+							switch (side) {
 
 								case 'left':
 									result = (diffY < boundary && diffY > (-1 * boundary)) && (diffX > delta);
