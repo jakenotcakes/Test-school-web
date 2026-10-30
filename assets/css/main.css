@@ -1,4 +1,7 @@
 /*
+	Arcana by HTML5 UP (html5up.net | @ajlkn)
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
 	Palette: Cream (background) > Emerald (structure) > Gold (details) > Orange (highlights)
 
 	Contents
@@ -6,11 +9,12 @@
 	 2. Base            6. Buttons           10. Footer
 	 3. Layout          7. Section heads     11. Mobile menu
 	 4. Header & nav    8. Highlights        12. Responsive / accessibility
+	                                         13. Arabic / right-to-left
 */
 
 /* 1. TOKENS ----------------------------------------------------------------
    Every color, font and size lives here. Change a value once and it updates
-   everywhere it's used. */
+   everywhere it's used. (These replace Arcana's _vars.scss.) */
 
 :root {
 	/* Cream: backgrounds */
@@ -31,6 +35,10 @@
 	   darker shade used for text so it stays readable on cream and white. */
 	--orange:      #d97b3f;
 	--orange-text: #a9501a;
+
+	/* WhatsApp buttons: a deeper green than WhatsApp's own so white text stays readable */
+	--whatsapp:      #12805c;
+	--whatsapp-dark: #0d6648;
 
 	/* Text */
 	--text:   #26312b;
@@ -80,6 +88,7 @@ h3 { font-size: 1.25rem; }
 p, ul, ol, dl { margin: 0 0 1.25em; }
 img { display: block; max-width: 100%; height: auto; }
 
+/* Links: orange text with Arcana's dotted underline; components below remove it. */
 a {
 	color: var(--orange-text);
 	text-decoration: underline dotted;
@@ -96,11 +105,12 @@ a:hover { text-decoration-color: transparent; }
 }
 
 .skip-link {                            /* appears when a keyboard user presses Tab */
-	position: absolute; left: -9999px; top: 0; z-index: 20000;
+	position: absolute; inset-inline-start: 0; top: 0; z-index: 20000;
+	transform: translateY(-150%);            /* hidden above the screen. (Not off to the left: in Arabic that stretches the page sideways.) */
 	padding: 0.75rem 1.25rem;
 	background: var(--emerald); color: #fff; text-decoration: none; font-weight: 600;
 }
-.skip-link:focus { left: 0; }
+.skip-link:focus { transform: translateY(0); }
 
 /* Stops animations until the page has loaded (main.js removes this class). */
 body.is-preload *, body.is-preload *::before, body.is-preload *::after {
@@ -156,12 +166,12 @@ section[id] { scroll-margin-top: 4rem; }
 	text-decoration: none;
 }
 .logo-badge { width: 3.5rem; height: 3.5rem; object-fit: contain; }
-.logo-text  { display: flex; flex-direction: column; text-align: left; line-height: 1.2; }
+.logo-text  { display: flex; flex-direction: column; text-align: start; line-height: 1.2; }
 .logo-text strong { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.025em; }
 .logo-text em     { font-style: normal; font-size: 0.95rem; color: var(--muted); }
 
 /* The nav bar sticks to the top while scrolling. A gold strip runs under it
-   and the current section gets a gold diamond pointer. */
+   and the current section gets a gold diamond pointer (Arcana's signature). */
 #nav {
 	position: sticky;
 	top: 0;
@@ -207,7 +217,7 @@ section[id] { scroll-margin-top: 4rem; }
 	z-index: 1;
 }
 
-#nav li.nav-cta { margin-left: 0.75rem; }        /* Login / Register */
+#nav li.nav-cta { margin-inline-start: 0.75rem; }   /* language toggle */
 #nav li.nav-cta a {
 	padding: 0.55rem 1.1rem;
 	border-radius: var(--radius);
@@ -258,23 +268,23 @@ section[id] { scroll-margin-top: 4rem; }
 	justify-content: space-between;
 	gap: 3rem;
 }
-.banner-text { flex: 1 1 auto; max-width: 40rem; text-align: left; }
+.banner-text { flex: 1 1 auto; max-width: 40rem; text-align: start; }
 
 .banner-crest {
 	flex: 0 0 auto;
-	width: clamp(15rem, 30vw, 20rem);
+	width: clamp(9rem, 22vw, 16rem);
 	margin: 0;
 	filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.28));
 }
 .eyebrow {                              /* small label above a headline */
 	margin: 0 0 0.75rem;
 	color: var(--gold-light);
-	font-size: 3rem;
+	font-size: 0.9rem;
 	font-weight: 700;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
 }
-.banner h3 { margin-bottom: 0.5em; color: #fff; text-wrap: balance; }
+.banner h1 { margin-bottom: 0.5em; color: #fff; text-wrap: balance; }
 .banner .lead {
 	max-width: 40rem;
 	margin: 0 0 2rem;
@@ -318,8 +328,17 @@ section[id] { scroll-margin-top: 4rem; }
 }
 .actions.special { justify-content: center; }
 
+/* Icon inside a button, with a gap that flips correctly in Arabic */
+.button i { margin-inline-end: 0.55rem; }
+
+/* WhatsApp buttons (Admission and Contact) */
+.button.whatsapp { background: var(--whatsapp); border-color: var(--whatsapp); color: #fff; }
+.button.whatsapp:hover { background: var(--whatsapp-dark); border-color: var(--whatsapp-dark); color: #fff; }
+.contact-actions { margin: 0 0 1.5rem; }
+.contact-actions .button { width: 100%; }
+
 /* 7. SECTION HEADS --------------------------------------------------------- */
-/* Big heading with a small subtitle under a short rule . */
+/* Big heading with a small subtitle under a short rule (Arcana's "major" header). */
 
 .section-head { max-width: 48rem; margin: 0 auto 2.75rem; text-align: center; }
 .section-head h2 { margin-bottom: 0.9rem; }
@@ -337,7 +356,7 @@ section[id] { scroll-margin-top: 4rem; }
 /* 8. HIGHLIGHTS (the four icons under the banner) -------------------------- */
 
 .highlight { text-align: center; }
-.icon-circle {                        
+.icon-circle {                          /* Arcana's round icon with a double ring */
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -356,7 +375,7 @@ section[id] { scroll-margin-top: 4rem; }
 /* 9. SECTIONS -------------------------------------------------------------- */
 
 /* About: vision / mission / values */
-.note { border-left: 4px solid var(--gold); }
+.note { border-inline-start: 4px solid var(--gold); }
 .note h3, .value h3 { margin-bottom: 0.3em; }
 .note p, .value p { margin: 0; color: var(--muted); }
 .values { margin-top: 1.75rem; }
@@ -479,11 +498,19 @@ section[id] { scroll-margin-top: 4rem; }
 	gap: 1.25rem;
 	max-width: 44rem;
 	margin: 0 auto;
-	border-left: 5px solid var(--orange);
+	border-inline-start: 5px solid var(--orange);
 	box-shadow: var(--shadow);
 }
 .notice > i { flex: 0 0 auto; color: var(--orange); font-size: 2rem; }
 .notice p { margin: 0; color: var(--emerald); font-size: 1.15rem; font-weight: 600; }
+
+/* Admission: the line and buttons under the notice */
+.admission-help {
+	max-width: 44rem;
+	margin: 1.75rem auto 1.25rem;
+	text-align: center;
+	color: var(--muted);
+}
 
 /* Contact */
 .contact-grid { align-items: start; }
@@ -558,6 +585,7 @@ textarea { min-height: 9rem; resize: vertical; }
 	border-radius: 50%;
 	color: #fff;
 }
+.icons a.icon-whatsapp { background: var(--whatsapp); border-color: var(--whatsapp); }
 .icons a:hover { background: var(--gold); border-color: var(--gold); color: var(--emerald-dark); }
 
 .copyright {
@@ -673,6 +701,7 @@ textarea { min-height: 9rem; resize: vertical; }
 	#navPanel .link:first-child { border-top: 0; }
 	#navPanel .link:hover { color: #fff; }
 	#navPanel .link.depth-0 { color: #fff; }
+	#navPanel .link.lang-toggle { color: var(--gold); font-weight: 700; }   /* language toggle */
 
 	body.navPanel-visible #page-wrapper,
 	body.navPanel-visible #titleBar { transform: translateX(var(--panel-width)); }
@@ -687,6 +716,18 @@ textarea { min-height: 9rem; resize: vertical; }
 	.banner .lead { margin-inline: auto; }
 	.banner .actions { justify-content: center; }
 	.cols--2, .contact-grid { grid-template-columns: 1fr; }
+
+	/* Arabic: the menu button moves to the right and the panel slides in from the right.
+	   (util.js flips the swipe-to-close direction to match.) */
+	html[dir="rtl"] #titleBar .toggle { left: auto; right: 0; }
+	html[dir="rtl"] #navPanel {
+		left: auto; right: 0;
+		box-shadow: inset 1px 0 3px rgba(0, 0, 0, 0.5);
+		transform: translateX(var(--panel-width));
+	}
+	html[dir="rtl"] body.navPanel-visible #page-wrapper,
+	html[dir="rtl"] body.navPanel-visible #titleBar { transform: translateX(calc(var(--panel-width) * -1)); }
+	html[dir="rtl"] body.navPanel-visible #navPanel { transform: translateX(0); }
 }
 
 @media (max-width: 600px) {
@@ -712,3 +753,24 @@ textarea { min-height: 9rem; resize: vertical; }
 	html { scroll-behavior: auto; }
 	*, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
 }
+
+/* 13. ARABIC / RIGHT-TO-LEFT -------------------------------------------------
+   main.js sets <html lang="ar" dir="rtl"> when the visitor picks Arabic. The browser
+   mirrors flex rows, grids and text alignment by itself, and the rules above use
+   logical properties (start / end), so only these few touch-ups are needed.
+   The mobile menu flip is inside the 840px block in section 12. */
+
+html[lang="ar"] {
+	--font: "Tajawal", "Source Sans 3", system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+}
+html[lang="ar"] body { line-height: 1.85; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4 { line-height: 1.5; }
+
+/* Arabic letters join up, so any letter-spacing or uppercase styling breaks the writing. */
+html[lang="ar"] *, html[lang="ar"] *::before, html[lang="ar"] *::after {
+	letter-spacing: normal !important;
+	text-transform: none !important;
+}
+
+/* Email addresses are typed left-to-right even on an Arabic page. */
+html[dir="rtl"] input[type="email"] { direction: ltr; text-align: right; }
