@@ -2,6 +2,14 @@
 <!--
 	Layout: Arcana by HTML5 UP (html5up.net | @ajlkn)
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+	LANGUAGE (English / Arabic)
+	English is the normal text in each tag. The Arabic version sits next to it in a
+	data-ar="..." attribute, and main.js swaps between the two when the toggle is pressed.
+	To edit a translation, change the data-ar text on that same tag.
+	  data-ar            swaps the text inside the tag
+	  data-ar-alt        swaps an image's alt text
+	  data-ar-aria-label swaps an aria-label
 -->
 <html lang="en">
 	<head>
@@ -11,20 +19,38 @@
 		<meta name="description" content="Al-Talib Al Thaki Private School is a learning center providing a safe, supportive, and inspiring environment for children to learn, love, and live their life at its fullest." />
 		<meta name="theme-color" content="#0e4b3b" />
 
+		<!-- Runs before the page paints, so an Arabic reader never sees a flash of left-to-right
+		     layout. main.js saves the visitor's choice under "atat-lang".
+		     DEFAULT LANGUAGE: change 'ar' to 'en' on the next line to make English the default
+		     (and change DEFAULT_LANG in main.js to match). -->
+		<script>
+			var siteLang = 'ar';
+			try {
+				siteLang = localStorage.getItem('atat-lang') || siteLang;
+			} catch (e) {}
+			if (siteLang === 'ar') {
+				document.documentElement.lang = 'ar';
+				document.documentElement.dir = 'rtl';
+			}
+		</script>
+
 		<link rel="icon" type="image/png" href="img/LOGO2.png" />
 
-		<!-- Source Sans: Arcana's typeface. preconnect opens the connection early so the font arrives sooner. -->
+		<!-- Source Sans for English, Tajawal for Arabic. preconnect opens the connection early so the fonts arrive sooner. -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" />
 
 		<!-- Icons (Font Awesome Free 5.15.4) and the site stylesheet -->
 		<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 
-	<body class="is-preload">
-		<a class="skip-link" href="#main">Skip to main content</a>
+	<!-- WHATSAPP NUMBER: replace 96800000000 with the school's real number.
+	     Country code first, digits only, no "+" or spaces (968 is Oman's code).
+	     Every WhatsApp button on the page reads it from here. -->
+	<body class="is-preload" data-whatsapp="96800000000">
+		<a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى الرئيسي">Skip to main content</a>
 
 		<div id="page-wrapper">
 
@@ -35,22 +61,23 @@
 				<a href="#home" id="logo">
 					<img class="logo-badge" src="img/LOGO2.png" alt="" />
 					<span class="logo-text">
-						<strong>Al-Talib Al Thaki Private School</strong>
-						<em>Mabela, Oman</em>
+						<strong data-ar="مدرسة الطالب الذكي الخاصة">Al-Talib Al Thaki Private School</strong>
+						<em data-ar="المعبيلة، سلطنة عُمان">Mabela, Oman</em>
 					</span>
 				</a>
 			</div>
 
 			<nav id="nav" aria-label="Main">
 				<ul>
-					<li class="current"><a href="#home">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#campuses">Our Campuses</a></li>
-					<li><a href="#admission">Admission</a></li>
-					<li><a href="#news">News</a></li>
-					<li><a href="#contact">Contact</a></li>
-					<!-- For the LMS login in the future -->
-					<li class="nav-cta"><a href="#">Login / Register</a></li>
+					<li class="current"><a href="#home" data-ar="الرئيسية">Home</a></li>
+					<li><a href="#about" data-ar="من نحن">About</a></li>
+					<li><a href="#campuses" data-ar="فروعنا">Our Campuses</a></li>
+					<li><a href="#admission" data-ar="القبول">Admission</a></li>
+					<li><a href="#news" data-ar="الأخبار">News</a></li>
+					<li><a href="#contact" data-ar="اتصل بنا">Contact</a></li>
+					<!-- Language toggle. It shows the language you can switch TO.
+					     (The old Login / Register link was here. Put it back as another <li> when the LMS is ready.) -->
+					<li class="nav-cta"><a href="#" class="lang-toggle" role="button" lang="ar" data-ar="English">العربية</a></li>
 				</ul>
 			</nav>
 
@@ -59,17 +86,17 @@
 				<!-- ===================== BANNER ===================== -->
 				<section id="home" class="banner">
 					<div class="container banner-inner">
-						<!-- Text sits on the left; the crest sits on the right (see .banner-inner in main.css). -->
+						<!-- Text on one side, crest on the other. In Arabic the two sides mirror automatically. -->
 						<div class="banner-text">
-							<p class="eyebrow">Al-Talib Al Thaki Private School</p>
-							<h3>A Place you can call home</h3>
-							<p class="lead">We provide a safe, supportive, and inspiring environment for children to learn, love, and find their passion.</p>
+							<p class="eyebrow" data-ar="مدرسة الطالب الذكي الخاصة">Al-Talib Al Thaki Private School</p>
+							<h1 data-ar="مكانٌ تشعر فيه أنك في بيتك">A Place you can call home</h1>
+							<p class="lead" data-ar="نوفّر بيئة آمنة وداعمة وملهمة ليتعلّم الأطفال ويحبّوا ويكتشفوا شغفهم.">We provide a safe, supportive, and inspiring environment for children to learn, love, and find their passion.</p>
 							<ul class="actions">
-								<li><a class="button" href="#admission">Start Learning</a></li>
-								<li><a class="button alt" href="#about">Learn More</a></li>
+								<li><a class="button" href="#admission" data-ar="ابدأ التعلّم">Start Learning</a></li>
+								<li><a class="button alt" href="#about" data-ar="اعرف المزيد">Learn More</a></li>
 							</ul>
 						</div>
-						<img class="banner-crest" src="img/mascot.png" alt="Al-Talib Al Thaki Private School crest" />
+						<img class="banner-crest" src="img/mascot.png" alt="Al-Talib Al Thaki Private School crest" data-ar-alt="شعار مدرسة الطالب الذكي الخاصة" />
 					</div>
 				</section>
 
@@ -79,23 +106,23 @@
 						<div class="cols cols--4">
 							<div class="highlight">
 								<span class="icon-circle"><i class="fas fa-book-open" aria-hidden="true"></i></span>
-								<h3>Quality Education</h3>
-								<p>[Put description here]</p>
+								<h3 data-ar="تعليم عالي الجودة">Quality Education</h3>
+								<p data-ar="[ضع الوصف هنا]">[Put description here]</p>
 							</div>
 							<div class="highlight">
 								<span class="icon-circle"><i class="fas fa-heart" aria-hidden="true"></i></span>
-								<h3>Moral Development</h3>
-								<p>[Put description here]</p>
+								<h3 data-ar="التنمية الأخلاقية">Moral Development</h3>
+								<p data-ar="[ضع الوصف هنا]">[Put description here]</p>
 							</div>
 							<div class="highlight">
 								<span class="icon-circle"><i class="fas fa-users" aria-hidden="true"></i></span>
-								<h3>Supportive Community</h3>
-								<p>[Put description here]</p>
+								<h3 data-ar="مجتمع داعم">Supportive Community</h3>
+								<p data-ar="[ضع الوصف هنا]">[Put description here]</p>
 							</div>
 							<div class="highlight">
 								<span class="icon-circle"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
-								<h3>Qualified Teachers</h3>
-								<p>[Put description here]</p>
+								<h3 data-ar="معلمون مؤهلون">Qualified Teachers</h3>
+								<p data-ar="[ضع الوصف هنا]">[Put description here]</p>
 							</div>
 						</div>
 					</div>
@@ -105,39 +132,39 @@
 				<section id="about" class="wrapper style1">
 					<div class="container">
 						<header class="section-head">
-							<h2>About Al-Talib Al Thaki Private School</h2>
-							<p>Our Story</p>
+							<h2 data-ar="عن مدرسة الطالب الذكي الخاصة">About Al-Talib Al Thaki Private School</h2>
+							<p data-ar="من نحن وما نؤمن به">Who we are and what we stand for</p>
 						</header>
 
-						<p class="prose">Al-Talib Al Thaki Private School something something blabla test</p>
+						<p class="prose" data-ar="مدرسة الطالب الذكي الخاصة، نص تجريبي">Al-Talib Al Thaki Private School something something blabla test</p>
 
 						<div class="cols cols--2">
 							<div class="card note">
-								<h3>Vision</h3>
-								<p>[School Vision]</p>
+								<h3 data-ar="الرؤية">Vision</h3>
+								<p data-ar="[رؤية المدرسة]">[School Vision]</p>
 							</div>
 							<div class="card note">
-								<h3>Mission</h3>
-								<p>[School Mission]</p>
+								<h3 data-ar="الرسالة">Mission</h3>
+								<p data-ar="[رسالة المدرسة]">[School Mission]</p>
 							</div>
 						</div>
 
 						<div class="cols cols--4 values">
 							<div class="card value">
-								<h3>[note 1]]</h3>
-								<p>[Description]</p>
+								<h3 data-ar="[ملاحظة 1]">[note 1]</h3>
+								<p data-ar="[الوصف]">[Description]</p>
 							</div>
 							<div class="card value">
-								<h3>[note 2]</h3>
-								<p>[Description]</p>
+								<h3 data-ar="[ملاحظة 2]">[note 2]</h3>
+								<p data-ar="[الوصف]">[Description]</p>
 							</div>
 							<div class="card value">
-								<h3>[note 3]</h3>
-								<p>[Description]</p>
+								<h3 data-ar="[ملاحظة 3]">[note 3]</h3>
+								<p data-ar="[الوصف]">[Description]</p>
 							</div>
 							<div class="card value">
-								<h3>[note 4]</h3>
-								<p>[Description]</p>
+								<h3 data-ar="[ملاحظة 4]">[note 4]</h3>
+								<p data-ar="[الوصف]">[Description]</p>
 							</div>
 						</div>
 					</div>
@@ -148,14 +175,14 @@
 				<section id="goals" class="wrapper style2">
 					<div class="container">
 						<header class="section-head">
-							<h2>School Goals</h2>
-							<p>[description here]</p>
+							<h2 data-ar="أهداف المدرسة">School Goals</h2>
+							<p data-ar="ما نسعى إلى تحقيقه">What we work toward</p>
 						</header>
 						<ol class="goals">
-							<li>[Goal 1]</li>
-							<li>[Goal 2]</li>
-							<li>[Goal 3]</li>
-							<li>[Goal 4]</li>
+							<li data-ar="[الهدف 1]">[Goal 1]</li>
+							<li data-ar="[الهدف 2]">[Goal 2]</li>
+							<li data-ar="[الهدف 3]">[Goal 3]</li>
+							<li data-ar="[الهدف 4]">[Goal 4]</li>
 						</ol>
 					</div>
 				</section>
@@ -165,24 +192,24 @@
 				<section id="staff" class="wrapper style1">
 					<div class="container">
 						<header class="section-head">
-							<h2>Leadership &amp; Staff</h2>
-							<p>Meet the Team</p>
+							<h2 data-ar="القيادة والكادر">Leadership &amp; Staff</h2>
+							<p data-ar="من يقودون مدرستنا">The people who lead our school</p>
 						</header>
 						<div class="cols cols--3">
 							<div class="card staff-card">
 								<span class="avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></span>
-								<h3>[Principal's Name]</h3>
-								<p>Principal</p>
+								<h3 data-ar="[اسم المدير]">[Principal's Name]</h3>
+								<p data-ar="مدير المدرسة">Principal</p>
 							</div>
 							<div class="card staff-card">
 								<span class="avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></span>
-								<h3>[Vice Principal's Name]</h3>
-								<p>Vice Principal / Academics</p>
+								<h3 data-ar="[اسم نائب المدير]">[Vice Principal's Name]</h3>
+								<p data-ar="نائب المدير / الشؤون الأكاديمية">Vice Principal / Academics</p>
 							</div>
 							<div class="card staff-card">
 								<span class="avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></span>
-								<h3>[Staff Member's Name]</h3>
-								<p>Head of Student Services</p>
+								<h3 data-ar="[اسم الموظف]">[Staff Member's Name]</h3>
+								<p data-ar="رئيس خدمات الطلاب">Head of Student Services</p>
 							</div>
 						</div>
 					</div>
@@ -192,38 +219,38 @@
 				<section id="campuses" class="wrapper style2">
 					<div class="container">
 						<header class="section-head">
-							<h2>Our Campuses</h2>
-							<p>Where We Teach</p>
+							<h2 data-ar="فروعنا">Our Campuses</h2>
+							<p data-ar="اعثر على أقرب فرع إليك">Find the campus nearest you</p>
 						</header>
 						<div class="cols cols--3">
 							<!-- To use a photo, replace the .campus-media div with: <img src="img/campus1.jpg" alt="Campus 1 building" /> -->
 							<article class="card campus-card">
 								<div class="campus-media" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
 								<div class="campus-body">
-									<h3>Campus 1</h3>
+									<h3 data-ar="الفرع 1">Campus 1</h3>
 									<ul class="contact-lines">
-										<li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:campus1@gmail.com">campus1@gmail.com</a></li>
-										<li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+9680000001">(+968) 000-0001</a></li>
+										<li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:campus1@gmail.com" dir="ltr">campus1@gmail.com</a></li>
+										<li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+9680000001" dir="ltr">(+968) 000-0001</a></li>
 									</ul>
 								</div>
 							</article>
 							<article class="card campus-card">
 								<div class="campus-media" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
 								<div class="campus-body">
-									<h3>Campus 2</h3>
+									<h3 data-ar="الفرع 2">Campus 2</h3>
 									<ul class="contact-lines">
-										<li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:campus2@gmail.com">campus2@gmail.com</a></li>
-										<li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+9680000002">(+968) 000-0002</a></li>
+										<li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:campus2@gmail.com" dir="ltr">campus2@gmail.com</a></li>
+										<li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+9680000002" dir="ltr">(+968) 000-0002</a></li>
 									</ul>
 								</div>
 							</article>
 							<article class="card campus-card">
 								<div class="campus-media" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
 								<div class="campus-body">
-									<h3>Campus 3</h3>
+									<h3 data-ar="الفرع 3">Campus 3</h3>
 									<ul class="contact-lines">
-										<li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:campus3@gmail.com">campus3@gmail.com</a></li>
-										<li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+9680000003">(+968) 000-0003</a></li>
+										<li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:campus3@gmail.com" dir="ltr">campus3@gmail.com</a></li>
+										<li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+9680000003" dir="ltr">(+968) 000-0003</a></li>
 									</ul>
 								</div>
 							</article>
@@ -236,31 +263,31 @@
 				<section id="news" class="wrapper style1">
 					<div class="container">
 						<header class="section-head">
-							<h2>News &amp; Information</h2>
-							<p>Stay Updated</p>
+							<h2 data-ar="الأخبار والمعلومات">News &amp; Information</h2>
+							<p data-ar="الإعلانات والفعاليات القادمة">Announcements and upcoming events</p>
 						</header>
 						<div class="cols cols--2">
 							<div>
-								<h3>Latest News</h3>
+								<h3 data-ar="آخر الأخبار">Latest News</h3>
 								<ul class="news-list">
-									<li><span class="news-date">Sept 15</span><span>[Insert latest school announcement or academic update here]</span></li>
-									<li><span class="news-date">Sept 15</span><span>[Insert latest school announcement or academic update here]</span></li>
-									<li><span class="news-date">Sept 15</span><span>[Insert latest school announcement or academic update here]</span></li>
+									<li><span class="news-date" data-ar="15 سبتمبر">Sept 15</span><span data-ar="[أدخل آخر إعلان مدرسي أو تحديث أكاديمي هنا]">[Insert latest school announcement or academic update here]</span></li>
+									<li><span class="news-date" data-ar="15 سبتمبر">Sept 15</span><span data-ar="[أدخل آخر إعلان مدرسي أو تحديث أكاديمي هنا]">[Insert latest school announcement or academic update here]</span></li>
+									<li><span class="news-date" data-ar="15 سبتمبر">Sept 15</span><span data-ar="[أدخل آخر إعلان مدرسي أو تحديث أكاديمي هنا]">[Insert latest school announcement or academic update here]</span></li>
 								</ul>
 							</div>
 							<div>
-								<h3>Upcoming Events</h3>
+								<h3 data-ar="الفعاليات القادمة">Upcoming Events</h3>
 								<div class="card event">
-									<h4>Event 1</h4>
-									<p>[Insert upcoming event details here]</p>
+									<h4 data-ar="الفعالية 1">Event 1</h4>
+									<p data-ar="[أدخل تفاصيل الفعالية القادمة هنا]">[Insert upcoming event details here]</p>
 								</div>
 								<div class="card event">
-									<h4>Event 2</h4>
-									<p>[Insert upcoming event details here]</p>
+									<h4 data-ar="الفعالية 2">Event 2</h4>
+									<p data-ar="[أدخل تفاصيل الفعالية القادمة هنا]">[Insert upcoming event details here]</p>
 								</div>
 								<div class="card event">
-									<h4>Event 3</h4>
-									<p>[Insert upcoming event details here]</p>
+									<h4 data-ar="الفعالية 3">Event 3</h4>
+									<p data-ar="[أدخل تفاصيل الفعالية القادمة هنا]">[Insert upcoming event details here]</p>
 								</div>
 							</div>
 						</div>
@@ -272,29 +299,29 @@
 				<section id="extracurriculars" class="wrapper style2">
 					<div class="container">
 						<header class="section-head">
-							<h2>Extracurriculars</h2>
-							<p>Beyond the Classroom</p>
+							<h2 data-ar="الأنشطة اللاصفية">Extracurriculars</h2>
+							<p data-ar="أنشطة خارج الصف">Activities outside the classroom</p>
 						</header>
 						<div class="cols cols--4">
 							<div class="card activity">
 								<span class="icon-disc"><i class="fas fa-futbol" aria-hidden="true"></i></span>
-								<h3>Sports &amp; Athletics</h3>
-								<p>Teams and games that build fitness and teamwork.</p>
+								<h3 data-ar="الرياضة والألعاب البدنية">Sports &amp; Athletics</h3>
+								<p data-ar="فرق ومسابقات تبني اللياقة وروح الفريق.">Teams and games that build fitness and teamwork.</p>
 							</div>
 							<div class="card activity">
 								<span class="icon-disc"><i class="fas fa-palette" aria-hidden="true"></i></span>
-								<h3>Arts &amp; Creativity</h3>
-								<p>Space to draw, perform, and make things.</p>
+								<h3 data-ar="الفنون والإبداع">Arts &amp; Creativity</h3>
+								<p data-ar="مساحة للرسم والأداء وصناعة الأشياء.">Space to draw, perform, and make things.</p>
 							</div>
 							<div class="card activity">
 								<span class="icon-disc"><i class="fas fa-users" aria-hidden="true"></i></span>
-								<h3>Clubs &amp; Societies</h3>
-								<p>Student-led groups built around shared interests.</p>
+								<h3 data-ar="النوادي والجمعيات">Clubs &amp; Societies</h3>
+								<p data-ar="مجموعات يقودها الطلاب حول اهتمامات مشتركة.">Student-led groups built around shared interests.</p>
 							</div>
 							<div class="card activity">
 								<span class="icon-disc"><i class="fas fa-hands-helping" aria-hidden="true"></i></span>
-								<h3>Community Service</h3>
-								<p>Giving back to the neighborhood, together.</p>
+								<h3 data-ar="خدمة المجتمع">Community Service</h3>
+								<p data-ar="نردّ الجميل لمجتمعنا معًا.">Giving back to the neighborhood, together.</p>
 							</div>
 						</div>
 					</div>
@@ -304,13 +331,25 @@
 				<section id="admission" class="wrapper style1">
 					<div class="container">
 						<header class="section-head">
-							<h2>Admission</h2>
-							<p>Join Our School</p>
+							<h2 data-ar="القبول">Admission</h2>
+							<p data-ar="كيف تسجّل طفلك">How to enroll your child</p>
 						</header>
 						<div class="card notice" role="status">
 							<i class="fas fa-info-circle" aria-hidden="true"></i>
-							<p>ADMISSION WEBSITE IS CURRENTLY TEMPORARILY UNAVAILABLE</p>
+							<p data-ar="موقع القبول غير متاح مؤقتًا في الوقت الحالي">ADMISSION WEBSITE IS CURRENTLY TEMPORARILY UNAVAILABLE</p>
 						</div>
+
+						<!-- Until the online admission site is back, parents can reach the office directly.
+						     When the school confirms the required documents and age cut-offs, add them here. -->
+						<p class="admission-help" data-ar="للاستفسار عن القبول، يمكنكم الاتصال بإدارة المدرسة أو مراسلتها.">For admission questions, call or message the school office.</p>
+						<ul class="actions special">
+							<li>
+								<a class="button" href="tel:+0000000000"><i class="fas fa-phone" aria-hidden="true"></i><span data-ar="اتصل بالمدرسة">Call the school office</span></a>
+							</li>
+							<li>
+								<a class="button whatsapp js-whatsapp" data-topic="admission" href="https://wa.me/" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><span data-ar="راسلنا عبر واتساب">Message us on WhatsApp</span></a>
+							</li>
+						</ul>
 					</div>
 				</section>
 
@@ -318,50 +357,54 @@
 				<section id="contact" class="wrapper style2">
 					<div class="container">
 						<header class="section-head">
-							<h2>Contact Us</h2>
-							<p>Get In Touch</p>
+							<h2 data-ar="اتصل بنا">Contact Us</h2>
+							<p data-ar="اتصل بنا أو راسلنا أو زرنا">Call, message, or visit us</p>
 						</header>
 
 						<div class="cols cols--2 contact-grid">
 							<!-- No server is connected yet: main.js only checks the fields and shows a message. -->
 							<form id="contactForm" class="card contact-form" novalidate>
-								<label for="name">Full name</label>
+								<label for="name" data-ar="الاسم الكامل">Full name</label>
 								<input type="text" id="name" name="name" autocomplete="name" required />
 
-								<label for="email">Email address</label>
+								<label for="email" data-ar="البريد الإلكتروني">Email address</label>
 								<input type="email" id="email" name="email" autocomplete="email" required />
 
-								<label for="message">Message</label>
+								<label for="message" data-ar="الرسالة">Message</label>
 								<textarea id="message" name="message" required></textarea>
 
-								<button type="submit" class="button">Send Message</button>
+								<button type="submit" class="button" data-ar="إرسال الرسالة">Send Message</button>
 								<p class="form-status" role="status" aria-live="polite"></p>
 							</form>
 
 							<div>
 								<dl class="info-grid">
 									<div class="card">
-										<dt>Address</dt>
-										<dd>zip code, City, province</dd>
+										<dt data-ar="العنوان">Address</dt>
+										<dd data-ar="[الرمز البريدي، المدينة، المحافظة]">zip code, City, province</dd>
 									</div>
 									<div class="card">
-										<dt>Phone</dt>
-										<dd>(000) 000-0000</dd>
+										<dt data-ar="الهاتف">Phone</dt>
+										<dd dir="ltr">(000) 000-0000</dd>
 									</div>
 									<div class="card">
-										<dt>Email</dt>
-										<dd><a href="mailto:testgmail@gmail.com">testgmail@gmail.com</a></dd>
+										<dt data-ar="البريد الإلكتروني">Email</dt>
+										<dd dir="ltr"><a href="mailto:testgmail@gmail.com">testgmail@gmail.com</a></dd>
 									</div>
 									<div class="card">
-										<dt>Office Hours</dt>
-										<dd>Monday&ndash;Friday, <span class="nowrap">8:00 AM&ndash;2:00 PM</span></dd>
+										<dt data-ar="ساعات الدوام">Office Hours</dt>
+										<dd data-ar='من الاثنين إلى الجمعة، <span class="nowrap">8:00 ص &ndash; 2:00 م</span>'>Monday&ndash;Friday, <span class="nowrap">8:00 AM&ndash;2:00 PM</span></dd>
 									</div>
 								</dl>
+
+								<div class="contact-actions">
+									<a class="button whatsapp js-whatsapp" data-topic="contact" href="https://wa.me/" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><span data-ar="تحدّث معنا عبر واتساب">Chat with us on WhatsApp</span></a>
+								</div>
 
 								<!-- Paste a Google Maps <iframe> here in place of this box. -->
 								<div class="map-slot">
 									<i class="fas fa-map-marked-alt" aria-hidden="true"></i>
-									<p>[MAP HERE]</p>
+									<p data-ar="[الخريطة هنا]">[MAP HERE]</p>
 								</div>
 							</div>
 						</div>
@@ -377,43 +420,44 @@
 						<div>
 							<div class="footer-brand">
 								<img src="img/LOGO2.png" alt="" />
-								<span>Al-Talib Al Thaki Private School</span>
+								<span data-ar="مدرسة الطالب الذكي الخاصة">Al-Talib Al Thaki Private School</span>
 							</div>
-							<p>A learning center helping children build a lifelong, loving relationship with their education.</p>
+							<p data-ar="مركز تعليمي يساعد الأطفال على بناء علاقة محبة تدوم مع التعليم مدى الحياة.">A learning center helping children build a lifelong, loving relationship with their education.</p>
 							<ul class="icons">
-								<li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-								<li><a href="https://www.instagram.com/al_talib_althaki_ma3bila/?hl=ar" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="https://www.youtube.com/watch?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaf_fl5cGFxl2gVSevWPwi7dVDKB6WP2D6LhTd4FTpTNjkipyWWU8_7VCelXZQ_aem_NsQUk6QTPH-Nb0d6L42WRA&v=EA-b5o9KrCc&feature=youtu.be" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+								<!-- WhatsApp replaces Facebook here. Its link is built by main.js from data-whatsapp on <body>. -->
+								<li><a href="https://wa.me/" class="icon-whatsapp js-whatsapp" data-topic="contact" target="_blank" rel="noopener" aria-label="WhatsApp" data-ar-aria-label="واتساب"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+								<li><a href="https://www.instagram.com/al_talib_althaki_ma3bila/?hl=ar" aria-label="Instagram" data-ar-aria-label="إنستغرام"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="https://www.youtube.com/watch?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaf_fl5cGFxl2gVSevWPwi7dVDKB6WP2D6LhTd4FTpTNjkipyWWU8_7VCelXZQ_aem_NsQUk6QTPH-Nb0d6L42WRA&v=EA-b5o9KrCc&feature=youtu.be" aria-label="YouTube" data-ar-aria-label="يوتيوب"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
 							</ul>
 						</div>
 
 						<div>
-							<h3>Quick Links</h3>
+							<h3 data-ar="روابط سريعة">Quick Links</h3>
 							<ul class="footer-links">
-								<li><a href="#about">About</a></li>
-								<li><a href="#goals">Our Goals</a></li>
-								<li><a href="#staff">Leadership &amp; Staff</a></li>
-								<li><a href="#campuses">Our Campuses</a></li>
-								<li><a href="#news">News &amp; Information</a></li>
-								<li><a href="#extracurriculars">Extracurriculars</a></li>
-								<li><a href="#admission">Admission</a></li>
-								<li><a href="#contact">Contact</a></li>
+								<li><a href="#about" data-ar="من نحن">About</a></li>
+								<li><a href="#goals" data-ar="أهدافنا">Our Goals</a></li>
+								<li><a href="#staff" data-ar="القيادة والكادر">Leadership &amp; Staff</a></li>
+								<li><a href="#campuses" data-ar="فروعنا">Our Campuses</a></li>
+								<li><a href="#news" data-ar="الأخبار والمعلومات">News &amp; Information</a></li>
+								<li><a href="#extracurriculars" data-ar="الأنشطة اللاصفية">Extracurriculars</a></li>
+								<li><a href="#admission" data-ar="القبول">Admission</a></li>
+								<li><a href="#contact" data-ar="اتصل بنا">Contact</a></li>
 							</ul>
 						</div>
 
 						<div>
-							<h3>Contact</h3>
+							<h3 data-ar="تواصل معنا">Contact</h3>
 							<ul class="footer-links">
-								<li>zip code, City, province</li>
-								<li><a href="tel:+0000000000">(000) 000-0000</a></li>
-								<li><a href="mailto:testgmail@gmail.com">testgmail@gmail.com</a></li>
+								<li data-ar="[الرمز البريدي، المدينة، المحافظة]">zip code, City, province</li>
+								<li><a href="tel:+0000000000" dir="ltr">(000) 000-0000</a></li>
+								<li><a href="mailto:testgmail@gmail.com" dir="ltr">testgmail@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
 
 					<ul class="copyright">
-						<li>&copy; <span id="copyright-year"></span> Made By Dev Aeiru All rights reserved.</li>
-						<li><a href="#privacy">Privacy</a> &middot; <a href="#terms">Terms</a></li>
+						<li>&copy; <span id="copyright-year"></span> <span data-ar="تطوير Dev Aeiru. جميع الحقوق محفوظة.">Made By Dev Aeiru All rights reserved.</span></li>
+						<li><a href="#privacy" data-ar="الخصوصية">Privacy</a> &middot; <a href="#terms" data-ar="الشروط">Terms</a></li>
 					</ul>
 				</div>
 			</footer>
